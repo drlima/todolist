@@ -17,7 +17,7 @@ from django.conf.urls import url, include
 from django.contrib import admin
 
 urlpatterns = [
-    #url(r'$', include('todos.urls')),  # redirects the 8000 port to todo app
-    url(r'^todos/', include('todos.urls')),
     url(r'^admin/', admin.site.urls),
+    url(r'$', include('todos.urls')),  # redirects the 8000 port to todo app
+    url(r'^todos/', include('todos.urls')),
 ]
