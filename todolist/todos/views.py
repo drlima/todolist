@@ -2,7 +2,6 @@ from django.shortcuts import render, redirect
 from django.http import HttpResponse
 
 from .models import Todo
-# Create your views here.
 
 
 def index(request):
@@ -14,6 +13,7 @@ def index(request):
 
 
 def details(request, id):
+    print(type(id))
     context = {
         'todo' : Todo.objects.get(id=id)
     }
@@ -34,10 +34,24 @@ def add(request):
 
 
 def remove(request):
+    context = {'todos':  Todo.objects.all()}
     if request.method=='POST':
         todo = Todo.objects.get(id=request.POST['todo_id'])
         todo.delete()
+    return render(request, 'remove.html', context)
+
+
+def update(request, id):
+    if request.method=='POST':
+        print('*********************************')
+        print()
+        todo = Todo.objects.get(id=id)
+        todo.title = request.POST['title']
+        todo.text = request.POST['text']
+        todo.save(update_fields=['title', 'text'])
         return redirect('/todos')
     else:
-        context = {'todos':  Todo.objects.all()}
-        return render(request, 'remove.html', context)
+        context = {
+            'todo' : Todo.objects.get(id=id)
+        }
+        return render(request, 'update.html', context)

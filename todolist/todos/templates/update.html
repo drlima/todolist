@@ -1,11 +1,12 @@
 {% include 'partials/header.html'%}
-<form action="{% url 'add' %}" method="post">
+<form action="" method="post">
+
   {% csrf_token %}
     <label for="title"> Title</label><br />
-    <input type="text" name="title" id="title" />
+    <input type="text" name="title" id="title" value="{{todo.title}}"/>
     <br>
     <label for="text"> Text</label><br />
-    <textarea name="text" id="text"></textarea>
+    <textarea name="text" id="text"> {{todo.text}} </textarea>
     <br><br>
     <input type="submit" value="Submit" />
   </form>
