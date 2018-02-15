@@ -1,10 +1,13 @@
-{% include 'partials/header.html'%}
-<br>
-<h1> {{todo.title}}</h1>
-<p>{{todo.text}}</p>
-<br>
-Created on {{todo.created_at}}
-<br><br>
-<a href="/todos/update/{{todo.id}}">Update ToDo</a>
+{% extends 'layout.html'%}
 
-{% include 'partials/footer.html'%}
+{% block content%}
+<br>
+<h3> Todo name: {{todo.title}} </h3>
+  <p>Details: {{todo.text}}</p>
+<br>
+  Created on: {{todo.created_at}}
+<br><br>
+  <a href="/todos/update/{{todo.id}}">Update this ToDo</a>
+<br>
+  <a href="/todos/delete/{{todo.id}}">Delete this ToDo</a>
+{% endblock %}

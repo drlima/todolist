@@ -1,7 +1,20 @@
-{% include 'partials/header.html'%}
-    <ul>
-      {% for todo in todos %}
-        <li><a href="/todos/details/{{todo.id}}"> {{todo.title}}</a>: {{todo.text}}</li>
-      {% endfor%}
-    </ul>
-{% include 'partials/footer.html'%}
+{% extends 'layout.html'%}
+
+{% block content%}
+
+<h2>ToDos</h2>
+
+<table>
+  <tr>
+    <th>Task</th>
+    <th>Details</th>
+  </tr>
+  {% for todo in todos %}
+    <tr>
+        <td><a href="/todos/details/{{todo.id}}"> {{todo.title}}</a></td>
+        <td> {{todo.text}}</td>
+    </tr>
+  {% endfor%}
+</table>
+
+{% endblock %}

@@ -1,4 +1,6 @@
-{% include 'partials/header.html'%}
+{% extends 'layout.html'%}
+
+{% block content%}
 <form action="{% url 'add' %}" method="post">
   {% csrf_token %}
     <label for="title"> Title</label><br />
@@ -9,4 +11,4 @@
     <br><br>
     <input type="submit" value="Submit" />
   </form>
-{% include 'partials/footer.html'%}
+{% endblock %}

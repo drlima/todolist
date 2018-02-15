@@ -1,4 +1,7 @@
-{% include 'partials/header.html'%}
+{% extends 'layout.html'%}
+
+{% block content%}
+
 <form action="" method="post">
 
   {% csrf_token %}
@@ -10,4 +13,5 @@
     <br><br>
     <input type="submit" value="Submit" />
   </form>
-{% include 'partials/footer.html'%}
+
+{% endblock %}

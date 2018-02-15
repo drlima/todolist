@@ -1,4 +1,22 @@
-{% include 'partials/header.html'%}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title> ToDo List App </title>
+</head>
+<body>
+	<header class="container center-align">
+		<h1> <a href="/todos"> ToDo List App </a></h1>
+    <table>
+      <tr>
+        <th> <a href="/todos/add"> Add ToDos </a> </th>
+        <th> <a href="/todos/remove" > Remove ToDos </a> </th>
+        <th> <a href="/admin">Admin Login</a> </th>
+      </tr>
+    </table>
+	</header>
+
+	<div class="container">
+
 <form action="{% url 'remove' %}" method="post">
   {% csrf_token %}
     <label for="ToDos"> Title</label><br />
@@ -10,4 +28,6 @@
     <br><br>
     <input type="submit" value="Delete" />
   </form>
-{% include 'partials/footer.html'%}
+  <br>
+</body>
+</html>
