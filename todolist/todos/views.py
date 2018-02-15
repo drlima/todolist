@@ -8,7 +8,7 @@ from .models import Todo
 def index(request):
     context = {
     'name': 'Daniel',
-    'todos': Todo.objects.all()[:10]
+    'todos': Todo.objects.all()
     }
     return render(request, 'index.html', context)
 
@@ -31,3 +31,13 @@ def add(request):
         return redirect('/todos')
     else:
         return render(request, 'add.html')
+
+
+def remove(request):
+    if request.method=='POST':
+        todo = Todo.objects.get(id=request.POST['todo_id'])
+        todo.delete()
+        return redirect('/todos')
+    else:
+        context = {'todos':  Todo.objects.all()}
+        return render(request, 'remove.html', context)
